@@ -20,10 +20,22 @@ def timer_countdown(countdown_time, reminder_1, reminder_2):
             countdown_time -= 1
 
             if countdown_time == reminder_1:
+                with open('alerts.txt', 'r+', encoding='utf-8') as alerts_file:
+                    alerts_file.seek(0)
+                    alerts_file.truncate()
+                    alerts_file.write(str(reminder_1) + "s")
                 print("You have " + str(reminder_1) + " seconds left.")
             if countdown_time == reminder_2:
+                with open('alerts.txt', 'r+', encoding='utf-8') as alerts_file:
+                    alerts_file.seek(0)
+                    alerts_file.truncate()
+                    alerts_file.write(str(reminder_2) + "s")
                 print("You have " + str(reminder_2) + " seconds left.")
             if countdown_time == 0:
+                with open('alerts.txt', 'r+', encoding='utf-8') as alerts_file:
+                    alerts_file.seek(0)
+                    alerts_file.truncate()
+                    alerts_file.write(str(0) + "s")
                 print("Time is up!")
                 # change controller.txt to stop
                 with open('controller.txt', 'r+', encoding='utf-8') as controller_file:

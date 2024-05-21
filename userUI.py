@@ -1,5 +1,4 @@
 import time
-import os
 
 
 def set_timer(total_time, reminder1 = "000000", reminder2 = "000000"):
@@ -42,23 +41,11 @@ def cancel_timer():
         time_file.truncate()
         time_file.write("000000000000000000")
 
-def watch():
-    while True:
-        with open('time.txt', 'r+', encoding='utf-8') as time_file:
-            alert = time_file.read()
-            if alert == "0s":
-                print("Time's up")
-                break
-            if alert == "5s":
-                print("5s remaining")
-            if alert == "3s":
-                print("3s remaining")
 
 # Countdown from 10, pausing the timer for 2 seconds after starting, then continue countdown until time ends.
 # Submission reminders at 5 and 3 seconds.
 set_timer("000010", "000005", "000003")
 start_timer()
-watch()
 time.sleep(2)
 pause_timer()
 time.sleep(2)
@@ -72,8 +59,8 @@ time.sleep(2)
 cancel_timer()
 time.sleep(3)
 
-# Countdown from 4s.
-set_timer("000004")
+# Countdown from 6s.
+set_timer("000006")
 start_timer()
 
 

@@ -19,13 +19,13 @@ def timer_countdown(countdown_time, reminder_1, reminder_2):
             time.sleep(1)
             countdown_time -= 1
 
-            if countdown_time == reminder_1:
+            if countdown_time == reminder_1 and reminder_2 != 0:
                 with open('alerts.txt', 'r+', encoding='utf-8') as alerts_file:
                     alerts_file.seek(0)
                     alerts_file.truncate()
                     alerts_file.write(str(reminder_1) + "s")
                 print("You have " + str(reminder_1) + " seconds left.")
-            if countdown_time == reminder_2:
+            if countdown_time == reminder_2 and reminder_1 != 0:
                 with open('alerts.txt', 'r+', encoding='utf-8') as alerts_file:
                     alerts_file.seek(0)
                     alerts_file.truncate()
@@ -60,7 +60,6 @@ while True:
                 time_file.seek(0)
                 time_file.truncate()
                 time_file.write("000000000000000000")
-
             countdown_start = time_converter(time_data[0:6])
             prompt_1 = time_converter(time_data[6:12])
             prompt_2 = time_converter(time_data[12:18])

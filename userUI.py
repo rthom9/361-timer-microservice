@@ -56,7 +56,7 @@ set_timer("000005", "000000", "000000")
 start_timer()
 time.sleep(2)
 reset_timer()
-time.sleep(6)
+time.sleep(3)
 
 # Countdown from 8, reminders at 3 and 1 second(s).
 set_timer("000008", "000003", "000001")

@@ -1,5 +1,4 @@
-import tkinter
-from tkinter import messagebox
+import time
 
 def set_timer(total_time, reminder1="000000", reminder2="000000"):
     """Users must provide time arguments in HHMMSS format"""
@@ -48,25 +47,30 @@ def cancel_timer():
         time_file.write("000000000000000000")
 
 def monitor_timer(reminder_time_1="000000", reminder_time_2="000000"):
-    root = tkinter.Tk()
-    root.withdraw()
     while True:
         with open('alerts.txt', 'r+', encoding='utf-8') as alerts_file:
             alert = alerts_file.read()
             if alert == "0s":
                 break
             if alert == reminder_time_1:
-                messagebox.showinfo("Alert", f"You have {reminder_time_1} seconds remaining.")
-            if alert == reminder_time_2:
-                messagebox.showinfo("Alert", f"You have {reminder_time_2} seconds remaining.")
+                print(f"You have {reminder_time_1} seconds remaining.")
+                time.sleep(1)
                 alerts_file.write("")
-    print("")
-    print("\nTime is up! Press [ENTER].")
-    root.wm_attributes("-topmost", 1)
-    messagebox.showinfo(title="Alert", message="You are out of time. Game has ended.", parent=root)
+            if alert == reminder_time_2:
+                print(f"You have {reminder_time_2} seconds remaining.")
+                time.sleep(1)
+                alerts_file.write("")
+
+    print("\nTime is up!")
 
 
 set_timer("000010","000005","000002")
 start_timer()
-monitor_timer()
+monitor_timer("000005", "000002")
+
+time.sleep(5)
+
+set_timer("000010", "000007", "000005")
+start_timer()
+monitor_timer("000007", "000005")
 
